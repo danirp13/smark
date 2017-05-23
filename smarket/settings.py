@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'registration',
     'tienda',
 ]
 
@@ -119,4 +121,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/media/'
+
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR,'media'),
+    )
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'daniesolarte@umariana.edu.co'
+EMAIL_HOST_PASSWORD = 'shippuden13'
+EMAIL_PORT = 587
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

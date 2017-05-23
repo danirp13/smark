@@ -2,24 +2,21 @@
 {% load static %}
 
 {% block section %}
- <h2>{{ object.nombre }}</h2>
- <hr>
+ <h2>{{ object.nombre }}
+{% if objet.categoria_id %}
+	( <a href="{% url 'categoria-detail' object.categoria_id %}">{{ object.categoria }}</a>)
+ {% endif %} 
+ </h2>
+ <a href="{% url 'producto-update' object.id_producto %}">edit</a>
+ <a href="{% url 'producto-delete' object.id_producto %}">delete</a​>
+
 {% endblock section %}
 {% block maincontent %}  
-
 <div>
- <table border="1px">
- <tr>
- {% if object.id_categoria %}
- <td><label>nombre</label></td>
- <td><label>descripcion</label></td>
- 
- <tr>
- <td> {{ p.nombre }} </td>
- <td> {{ p.descripcion }} </td>
- </tr>
- {% endif %}
- </tr>
- </table>
+ <div>
+ <img src="{% static object.photo.url %}"
+style="width:550px;height:420px"/>
  </div>
+ </div>
+ 
  {% endblock maincontent %}  

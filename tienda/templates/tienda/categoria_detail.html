@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block section %}
  <h2>{{ object.nombre }}</h2>
  <hr>
@@ -8,23 +7,20 @@
 {% block maincontent %}  
 
 <div>
- <table border="1px">
+ <table border="1">
  <tr>
  {% for p in object.producto_set.all %}
- <td><label>nombre</label></td>
- <td><label>cantidad</label></td>
- <td><label>precio</label></td>
- <tr>
- <td> {{ p.nombre }} </td>
- <td> {{ p.cantidad }} </td>
- <td> {{ p.precio }} </td>	
- </tr>
- {% endfor %}
- </tr>
- </table>
+ <td>
+ <div>{{ p.nombre }}</div>
+ <div>
+ <a href="{% url 'producto-detail' p.id_producto %}">
+ <img src="{% static p.photo.url %}" style="width:200px;height:200px"/>
+ </a>
  </div>
- <a href="{% url 'categoria-update' object.id_categoria %}">edit</a>
- <a href="{% url 'categoria-delete' object.id_categoria %}">delete</a​>
- 
+  </td>
+ {% endfor %}
+ </tr> 
+ </table>
+</div>
 
  {% endblock maincontent %}  
